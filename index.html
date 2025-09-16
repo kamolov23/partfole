@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Моё портфолио — Одностраничный сайт</title>
+  <meta name="description" content="Личный сайт-портфолио" />
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-grad-start: #0ea5e9; /* sky-500 */
+      --bg-grad-end: #9333ea;   /* violet-600 */
+    }
+
+    body {
+      scroll-behavior: smooth;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--bg-grad-start), var(--bg-grad-end));
+      color: #fff;
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse at top right, rgba(255,255,255,.15), transparent 40%),
+                        radial-gradient(ellipse at bottom left, rgba(255,255,255,.08), transparent 35%);
+      pointer-events: none;
+    }
+    .avatar-wrap {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,.85);
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      background: #fff;
+    }
+    .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Sections */
+    section { padding: 5rem 0; }
+    .section-title { font-weight: 800; letter-spacing: .3px; }
+    .badge-skill { font-size: .9rem; }
+
+    /* Project cards */
+    .project-card { transition: transform .2s ease, box-shadow .2s ease; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 1rem 2rem rgba(0,0,0,.12); }
+
+    /* Timeline */
+    .timeline {
+      border-left: 2px solid rgba(0,0,0,.1);
+      padding-left: 1.25rem;
+    }
+    .timeline .item::marker { content: none; }
+    .timeline .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--bg-grad-end);
+      display: inline-block; margin-right: .5rem; transform: translate(-29px, 0);
+    }
+
+    /* Footer */
+    footer { background: #0f172a; color: #cbd5e1; }
+    footer a { color: #e2e8f0; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#top">Моё портфолио</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">Обо мне</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Навыки</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Проекты</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Опыт</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-12 col-md-auto text-center text-md-start">
+          <div class="avatar-wrap mx-auto mx-md-0">
+            <!-- Замените src на вашу фотографию -->
+            <img src="profil_photo.png" alt="Моё фото">
+          </div>
+        </div>
+        <div class="col-12 col-md">
+          <h1 class="display-5 fw-bold mb-2">Привет! Я <span class="text-warning">Раупов Азим</span></h1>
+          <p class="lead mb-4">Frontend / Backend разработчик. Создаю быстрые и красивые продукты.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#projects" class="btn btn-light btn-lg"><i class="bi bi-grid-3x3-gap"></i> Проекты</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg"><i class="bi bi-envelope"></i> Связаться</a>
+            <a href="#" class="btn btn-outline-warning btn-lg"><i class="bi bi-download"></i> Скачать CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <h2 class="section-title mb-3">Обо мне</h2>
+          <p class="fs-5">Коротко расскажите о себе: чем занимаетесь, какие технологии любите, чем можете помочь бизнесу. 2–4 предложения. Например: «Я разрабатываю веб‑приложения на Laravel и Vue, автоматизирую процессы и повышаю конверсию».</p>
+          <div class="row g-3 mt-3">
+            <div class="col-6 col-md-4"><div class="p-3 bg-body-tertiary rounded-4 text-center"><i class="bi bi-code-slash fs-3 d-block mb-1"></i>Чистый код</div></div>
+            <div class="col-6 col-md-4"><div class="p-3 bg-body-tertiary rounded-4 text-center"><i class="bi bi-speedometer fs-3 d-block mb-1"></i>Производительность</div></div>
+            <div class="col-6 col-md-4"><div class="p-3 bg-body-tertiary rounded-4 text-center"><i class="bi bi-shield-check fs-3 d-block mb-1"></i>Надёжность</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-body-tertiary">
+    <div class="container">
+      <h2 class="section-title mb-4">Навыки</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card rounded-4 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Стек</h5>
+              <div class="d-flex flex-wrap gap-2 mt-2">
+                <span class="badge text-bg-primary badge-skill">HTML</span>
+                <span class="badge text-bg-primary badge-skill">CSS / Bootstrap</span>
+                <span class="badge text-bg-primary badge-skill">JavaScript</span>
+                <span class="badge text-bg-primary badge-skill">PHP / Laravel</span>
+                <span class="badge text-bg-primary badge-skill">MySQL</span>
+                <span class="badge text-bg-primary badge-skill">Git</span>
+                <span class="badge text-bg-primary badge-skill">ООП</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card rounded-4 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Языки и инструменты</h5>
+              <p class="mb-2">Отметьте уровень владения:</p>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between"><small>Laravel</small><small>90%</small></div>
+                <div class="progress" role="progressbar" aria-label="Laravel" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width:90%"></div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between"><small>Bootstrap</small><small>60%</small></div>
+                <div class="progress" role="progressbar" aria-label="Bootstrap" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width:60%"></div>
+                </div>
+              </div>
+                 <div class="mb-3">
+                <div class="d-flex justify-content-between"><small>Html</small><small>100%</small></div>
+                <div class="progress" role="progressbar" aria-label="Bootstrap" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width:100%"></div>
+                </div>
+              </div>
+              <div class="mb-0">
+                <div class="d-flex justify-content-between"><small>MySQL</small><small>75%</small></div>
+                <div class="progress" role="progressbar" aria-label="MySQL" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width:75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="section-title mb-0">Проекты</h2>
+        <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-github"></i> GitHub</a>
+      </div>
+
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 border-0 shadow-sm project-card">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="Проект 1">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Название проекта 1</h5>
+              <p class="card-text">Короткое описание проекта: что делал, какие технологии использовал, какую задачу решил.</p>
+              <div class="mt-auto d-flex gap-2">
+                <span class="badge text-bg-secondary">Laravel</span>
+                <span class="badge text-bg-secondary">Bootstrap</span>
+                <span class="badge text-bg-secondary">MySQL</span>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-4">
+              <a class="btn btn-primary w-100" href="#" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Открыть</a>
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 border-0 shadow-sm project-card">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="Проект 2">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Название проекта 2</h5>
+              <p class="card-text">Короткое описание. Добавьте ссылку на demo или репозиторий.</p>
+              <div class="mt-auto d-flex gap-2">
+                <span class="badge text-bg-secondary">Vue</span>
+                <span class="badge text-bg-secondary">API</span>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-4">
+              <a class="btn btn-primary w-100" href="#" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Открыть</a>
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 border-0 shadow-sm project-card">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="Проект 3">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Название проекта 3</h5>
+              <p class="card-text">Короткое описание. Укажите, какую пользу получил пользователь/клиент.</p>
+              <div class="mt-auto d-flex gap-2">
+                <span class="badge text-bg-secondary">Android</span>
+                <span class="badge text-bg-secondary">Kotlin</span>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-4">
+              <a class="btn btn-primary w-100" href="#" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Открыть</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="bg-body-tertiary">
+    <div class="container">
+      <h2 class="section-title mb-4">Опыт и образование</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h5 class="mb-3"><i class="bi bi-briefcase"></i> Опыт</h5>
+          <ul class="list-unstyled timeline">
+            <li class="item mb-4">
+              <span class="dot"></span>
+              <strong>Компания А</strong> — Full‑stack разработчик (2023 — наст.)
+              <div class="text-muted small">Laravel, REST API, Bootstrap</div>
+            </li>
+            <li class="item mb-4">
+              <span class="dot"></span>
+              <strong>Фриланс</strong> — Web/Mobile (2021 — 2023)
+              <div class="text-muted small">Landing pages, Android-приложения</div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mb-3"><i class="bi bi-mortarboard"></i> Образование</h5>
+          <ul class="list-unstyled timeline">
+            <li class="item mb-4">
+              <span class="dot"></span>
+              <strong>Университет / Курсы</strong> — Специальность (год)
+              <div class="text-muted small">Основные предметы/направления</div>
+            </li>
+            <li class="item mb-4">
+              <span class="dot"></span>
+              Онлайн‑курсы — Laravel, Android, SQL (год)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title mb-3">Связаться со мной</h2>
+          <p class="mb-4">Оставьте сообщение — отвечу в ближайшее время.</p>
+          <form action="#" method="post" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Имя</label>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите имя.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" required>
+                <div class="invalid-feedback">Введите корректный email.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Сообщение</label>
+                <textarea class="form-control" rows="5" required></textarea>
+                <div class="invalid-feedback">Напишите сообщение.</div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary btn-lg" type="submit"><i class="bi bi-send"></i> Отправить</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-5 ms-auto">
+          <div class="p-4 bg-body-tertiary rounded-4 shadow-sm">
+            <h5 class="mb-3">Контакты</h5>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2"><i class="bi bi-geo-alt"></i> Город, страна</li>
+              <li class="mb-2"><i class="bi bi-envelope"></i> you@example.com</li>
+              <li class="mb-2"><i class="bi bi-telephone"></i> +992 900 000 000</li>
+              <li class="mb-0"><i class="bi bi-linkedin"></i> linkedin.com/in/yourname</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4 mt-5">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div class="small">© <span id="year"></span> Ваше Имя. Все права защищены.</div>
+      <div class="d-flex gap-3 fs-5">
+        <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="#" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Год в подвале
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Простая валидация формы Bootstrap
+    (function () {
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>
+</html>
